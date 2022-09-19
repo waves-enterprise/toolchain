@@ -1,12 +1,16 @@
 {
-  "name": "@wavesenterprise/sdk",
+  "name": "@wavesenterprise/оыsdk",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": false,
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "jest --watch"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "author": "stfy",
   "license": "ISC",

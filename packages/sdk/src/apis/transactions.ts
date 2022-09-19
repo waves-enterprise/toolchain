@@ -1,10 +1,15 @@
 import {Core} from "../core";
 
 export class TransactionsApi {
-    constructor(private core: Core) {}
+    constructor(private core: Core) {
+    }
 
     info(txId: string) {
         return this.core.get(`/transactions/info/${txId}`)
+    }
+
+    sign(tx: object) {
+        return this.core.post(`/transactions/sign`, tx)
     }
 
     utxSize() {
@@ -16,7 +21,7 @@ export class TransactionsApi {
     }
 
     utxInfo(txId: string) {
-        return this.core.get(`/transactions/unconfirmed/${txId}`)
+        return this.core.get(`/transactions/unconfirmed/info/${txId}`)
     }
 
     calculateFee(tx: any) {
@@ -29,5 +34,9 @@ export class TransactionsApi {
 
     signAndBroadcast(tx: any) {
         return this.core.post('/transactions/signAndBroadcast', tx);
+    }
+
+    addressTxs(address: string, limit: number) {
+        return this.core.get(`/transactions/address/${address}/limit/${limit}`)
     }
 }

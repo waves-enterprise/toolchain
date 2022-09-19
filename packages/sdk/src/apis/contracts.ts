@@ -7,34 +7,54 @@ export type StateParams = {
 }
 
 export class ContractsApi {
-    constructor(private core: Core) {
-    }
+    static prefix: '/contract'
+
+    constructor(private core: Core) {}
 
     list() {
         return this.core.get('/contracts')
     }
 
-    status(contractId: string) {
-        return this.core.get(`/contracts/status/${contractId}`)
+    contractsState(contracts: string[]) {
+        return this.core.post(`${ContractsApi.prefix}`, {contracts})
     }
 
     info(contractId: string) {
         return this.core.get(`/contracts/info/${contractId}`)
     }
 
+    status(contractId: string) {
+        return this.core.get(`/contracts/status/${contractId}`)
+    }
+
     getKey(contractId: string, key: string) {
         return this.core.get(`/contracts/${contractId}/${key}`)
+    }
+
+    getKeys(contractId: string, keys: string[]) {
+        return this.core.post(`/contracts/${contractId}`, {keys})
     }
 
     executedTxFor(txId: string) {
         return this.core.get(`/contracts/executed-tx-for/${txId}`)
     }
 
-    state(contractId: string, params?: Partial<StateParams>) {
+    contractState(contractId: string, params?: Partial<StateParams>) {
         return this.core.get(`/contracts/${contractId}`, {params})
     }
 
-    getKeys(contractId: string, keys: string[]) {
-        return this.core.post(`/contracts/${contractId}`, { keys })
+    systemBalance(contractId: string,) {
+        return this.core.get(`/contracts/balance/${contractId}`)
+    }
+
+    assetBalance(contractId: string, assetId: string) {
+        return this.core.get(`/contracts/asset-balance/${contractId}/${assetId}`)
+    }
+
+    assetBalances(contractId: string, assetIds: string[]) {
+        return this.core.post(`/contracts/asset-balances`, {
+            contractId,
+            assetIds
+        })
     }
 }

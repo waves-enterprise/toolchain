@@ -1,6 +1,5 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 
-
 export class Core {
     headers: Record<string, string> = {
         accept: 'application/json'
@@ -24,7 +23,6 @@ export class Core {
     request(url: string, method: string, config?: AxiosRequestConfig): any;
     request(url: string, method: string, config?: AxiosRequestConfig): any;
 
-
     request<Resp>(url: string, method: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Resp>> {
         let requestConfig: AxiosRequestConfig = {
             method,
@@ -38,9 +36,12 @@ export class Core {
     }
 
     async get<Resp>(uri: string, config?: AxiosRequestConfig): Promise<Resp> {
-        const res = await this.request(uri, 'GET', config);
-
-        return res.data;
+        try {
+            const res = await this.request(uri, 'GET', config);
+            return res.data
+        } catch (e) {
+            throw (e as any)?.response?.data || e.message
+        }
     }
 
     async post<T extends any>(uri: string, body: T, config?: AxiosRequestConfig) {

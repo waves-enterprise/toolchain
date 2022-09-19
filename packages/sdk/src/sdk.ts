@@ -4,12 +4,15 @@ import {TransactionsApi} from "./apis/transactions";
 import {SignedTx, Signer} from "@wavesenterprise/signer";
 import {ContractsApi} from "./apis/contracts";
 import {NodeApi} from "./apis/node";
+import {AssetsApi} from "./apis/assets";
 
 export class We extends Core {
     blocks: BlocksApi;
     transactions: TransactionsApi;
     contracts: ContractsApi;
     node: NodeApi;
+    assets: AssetsApi;
+
 
     signer: Signer
 
@@ -22,6 +25,7 @@ export class We extends Core {
         this.transactions = new TransactionsApi(this);
         this.contracts = new ContractsApi(this);
         this.node = new NodeApi(this);
+        this.assets = new AssetsApi(this)
     }
 
     setSigner(signer: Signer) {
@@ -42,6 +46,10 @@ export class We extends Core {
 
     addNodeApi(nodeApi: NodeApi) {
         this.node = nodeApi;
+    }
+
+    addAssetsApi(assetsApi: AssetsApi) {
+        this.assets = assetsApi;
     }
 
     async broadcast(tx: SignedTx<any>) {
