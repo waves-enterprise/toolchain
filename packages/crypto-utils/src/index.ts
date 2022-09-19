@@ -5,6 +5,7 @@ export * from './crypto/waves';
 
 export * from './types';
 
+export {default as dictionary} from './utils/dictionary';
 export * from './utils/random';
 export * from './utils/base58';
 export * from './utils/concatBytes'

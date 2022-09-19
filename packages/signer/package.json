@@ -23,7 +23,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@wavesenterprise/crypto-utils": "1.0.0-rc.1",
-    "@wavesenterprise/transactions-factory": "2.0.0-rc.1"
+    "@wavesenterprise/crypto-utils": "workspace:*",
+    "@wavesenterprise/transactions-factory": "2.0.0-rc.2"
   }
 }

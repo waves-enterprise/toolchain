@@ -9,7 +9,7 @@ export class BlocksApi {
      *
      */
     height() {
-        return this.core.get('/blocks/height')
+        return this.core.get<{height: number}>('/blocks/height')
     }
 
     /**

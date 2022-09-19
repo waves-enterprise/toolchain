@@ -1,7 +1,7 @@
 import {BaseTx} from '@wavesenterprise/transactions-factory'
 import {Keypair} from "./common/keypair";
 import {SignedTx} from "./signed-tx";
-import {getTransactionId} from "@wavesenterprise/crypto-utils";
+import {fromBase58, getTransactionId, strToBytes, verify} from "@wavesenterprise/crypto-utils";
 
 export * from './common/keypair';
 export * from './interface';
@@ -21,5 +21,19 @@ export class Signer {
         signedTx.proofs.add(signature)
 
         return signedTx;
+    }
+
+    async sign(msg: string | Uint8Array, seed: string): Promise<string> {
+        const keypair = await Keypair.fromExistingSeedPhrase(seed)
+
+        return keypair.sign(msg)
+    }
+
+    verify(
+        publicKey: string,
+        msg: string | Uint8Array,
+        signature: string
+    ): boolean {
+        return verify(fromBase58(publicKey), typeof msg === 'string' ? strToBytes(msg) : msg, strToBytes(signature))
     }
 }

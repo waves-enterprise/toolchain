@@ -15,12 +15,14 @@
   "author": "stfy",
   "license": "ISC",
   "dependencies": {
+    "@wavesenterprise/crypto-utils": "workspace:*",
     "@wavesenterprise/signer": "workspace:*",
-    "@wavesenterprise/transactions-factory": "2.0.0-rc.1",
+    "@wavesenterprise/transactions-factory": "2.0.0-rc.2",
     "axios": "^0.27.2"
   },
   "devDependencies": {
     "@types/jest": "^29.0.3",
+    "@types/node": "^18.7.18",
     "jest": "^29.0.3",
     "ts-jest": "^29.0.1",
     "ts-node": "^10.9.1",

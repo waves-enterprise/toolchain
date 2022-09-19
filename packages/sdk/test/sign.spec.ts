@@ -6,7 +6,6 @@ const SEED = 'when cluster camera mistake movie certain category garlic regret b
 const CARTER = 'https://carter.welocal.dev/nodeAddress';
 const networkByte = 'V'.charCodeAt(0)
 
-
 describe('Test asset Operations', () => {
     let weSdk: We;
     let keyPair: Keypair;
@@ -18,45 +17,80 @@ describe('Test asset Operations', () => {
         keyPair.setNetworkByte(networkByte)
     })
 
-    it('should sign and broadcast call contract', async function () {
-        const tx = TRANSACTIONS.CallContract.V5({
-            contractId: '9TvMKZuebH6NS33it9TeEH8CxmhxKqfunTYaJJc1AMyW',
-            contractVersion: 1,
-            senderPublicKey: await keyPair.publicKey(),
-            payments: [
-                {
-                    assetId: 'WEST',
-                    amount: 10000000
-                }
-            ],
-            fee: 100000000,
-            params: [
-                {
-                    type: 'string',
-                    key: 'action',
-                    value: 'transfer',
-                },
-                {
-                    type: "string",
-                    key: 'asset',
-                    value: "Cb1xsvZYjHgjZAZsdMMtbTwKhJY1kYLfpq1K65uJXJVM"
-                },
-                {
-                    type: "string",
-                    key: 'recipient',
-                    value: "3NukhxdTpDxXPYky45EPTg1tinzZDUWcbcB"
-                },
-                {
-                    type: "integer",
-                    key: 'qty',
-                    value: 150
-                }
-            ]
+    describe('CallContract', async function () {
+        it('should sign and broadcast call contract v5', async function () {
+            const tx = TRANSACTIONS.CallContract.V5({
+                contractId: '9TvMKZuebH6NS33it9TeEH8CxmhxKqfunTYaJJc1AMyW',
+                contractVersion: 1,
+                senderPublicKey: await keyPair.publicKey(),
+                payments: [
+                    {
+                        amount: 10000000
+                    }
+                ],
+                fee: 100000000,
+                params: [
+                    {
+                        type: 'string',
+                        key: 'action',
+                        value: 'transfer',
+                    },
+                    {
+                        type: "string",
+                        key: 'asset',
+                        value: "Cb1xsvZYjHgjZAZsdMMtbTwKhJY1kYLfpq1K65uJXJVM"
+                    },
+                    {
+                        type: "string",
+                        key: 'recipient',
+                        value: "3NukhxdTpDxXPYky45EPTg1tinzZDUWcbcB"
+                    },
+                    {
+                        type: "integer",
+                        key: 'qty',
+                        value: 150
+                    }
+                ]
+            });
+
+            const signedTx = await weSdk.signer.getSignedTx(tx, SEED);
+            const res = await weSdk.broadcast(signedTx);
+
+            console.log(res)
+
+            expect(res).toBeDefined()
+        });
+    })
+
+    describe('Transfer', () => {
+        it('should sign and broadcast transfer v3 transact', async function () {
+            const tx = TRANSACTIONS.Transfer.V3({
+                senderPublicKey: "AhQHhsmx9EWrJy6juLovM5DZdYCt7cTeoyX2yaTqDdNP",
+                amount: 1000000000,
+                fee: 100000000,
+                recipient: '3NhYbtnmo71sgxji92YkcWtZC9VzKyqSkFV',
+                attachment: ""
+            })
+
+            const signedTx = await weSdk.signer.getSignedTx(tx, SEED);
+            const res = await weSdk.broadcast(signedTx);
+
+            expect(res).toBeDefined()
         });
 
-        const signedTx = await weSdk.signer.getSignedTx(tx, SEED);
-        const res = await weSdk.broadcast(signedTx);
+        it('should sign and broadcast transfer v2 transact', async function () {
+            const tx = TRANSACTIONS.Transfer.V2({
+                senderPublicKey: "AhQHhsmx9EWrJy6juLovM5DZdYCt7cTeoyX2yaTqDdNP",
+                amount: 1000000000,
+                fee: 100000000,
+                recipient: '3NhYbtnmo71sgxji92YkcWtZC9VzKyqSkFV',
+                attachment: ""
+            })
 
-        expect(res).toBeDefined()
-    });
+            const signedTx = await weSdk.signer.getSignedTx(tx, SEED);
+            const res = await weSdk.broadcast(signedTx);
+
+            expect(res).toBeDefined()
+        });
+    })
 })

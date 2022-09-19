@@ -13,10 +13,15 @@ async function main() {
         contractVersion: 1,
         senderPublicKey: 'AhQHhsmx9EWrJy6juLovM5DZdYCt7cTeoyX2yaTqDdNP',
         payments: [
-            // {
-            //     assetId: 'WEST',
-            //     amount: 10000000
-            // }
+            // Transfer WEST
+            {
+                amount: 1000000
+            },
+            // Transfer custom token
+            {
+                assetId: 'Cb1xsvZYjHgjZAZsdMMtbTwKhJY1kYLfpq1K65uJXJVM',
+                amount: 1000000 // Transfer WEST
+            },
         ],
         fee: 100000000,
         params: [

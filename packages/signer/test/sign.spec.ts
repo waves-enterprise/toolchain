@@ -29,7 +29,11 @@ describe('Signer', () => {
             contractId: '9TvMKZuebH6NS33it9TeEH8CxmhxKqfunTYaJJc1AMyW',
             contractVersion: 1,
             senderPublicKey: 'FfwfXaYY6o9Gtp7YbkSPuJPZT7bgNLkNiQtY62Tm2RvQ',
-            payments: [],
+            payments: [
+                {
+                    amount: 10
+                }
+            ],
             fee: 100000000,
             params: [
                 {
@@ -57,8 +61,6 @@ describe('Signer', () => {
 
         const signedTx = await signer.getSignedTx(tx, SEED);
 
-
-        console.log(JSON.stringify(signedTx.getRawBody()))
         expect(signedTx.getRawBody()).toBeDefined()
     });
 })
