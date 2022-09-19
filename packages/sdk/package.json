@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "tsdx watch",
+    "build": "tsdx build",
     "test": "jest --watch"
   },
   "author": "stfy",
   "license": "ISC",
   "dependencies": {
     "@wavesenterprise/signer": "workspace:*",
-    "@wavesenterprise/transactions-factory": "link:../../../../transaction-factory",
+    "@wavesenterprise/transactions-factory": "2.0.0-rc.1",
     "axios": "^0.27.2"
   },
   "devDependencies": {

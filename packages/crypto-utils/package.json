@@ -1,14 +1,19 @@
 {
   "name": "@wavesenterprise/crypto-utils",
-  "version": "1.0.0",
-  "description": "",
+  "private": false,
+  "version": "1.0.0-rc.1",
+  "description": "Waves Enterprise crypto utils for signing txs",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/crypto-utils.esm.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsdx build",
     "start": "tsdx watch",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "prepublish": "npm run build"
   },
   "keywords": [],
   "author": "stfy",

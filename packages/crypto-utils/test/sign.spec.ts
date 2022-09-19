@@ -13,7 +13,7 @@ const res = {
     }
 }
 
-describe('Test asset Operations', () => {
+describe('Utils', () => {
     it('should make public and private keys', async function () {
         const keys = await createKeys(sha256, SEED)
 
@@ -21,7 +21,7 @@ describe('Test asset Operations', () => {
         expect(toBase58(keys.privateKey)).toBe(res.keyPair.privateKey)
     });
 
-    it('should make public and private keys', async function () {
+    it('should makea address', async function () {
         const keys = await createKeys(sha256, SEED)
 
         expect(toBase58(createAddress(keys.publicKey, 'V'.charCodeAt(0)))).toBe(res.address)

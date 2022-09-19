@@ -47,8 +47,8 @@ export class Core {
         try {
             const {data} = await this.request(uri, 'POST', {...config, data: body});
             return data
-        } catch (e: any) {
-            throw e?.response?.data || e.message
+        } catch (e) {
+            throw (e as any)?.response?.data || e.message
         }
     }
 }
