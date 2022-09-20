@@ -21,6 +21,9 @@ const NODE_URL = 'https://client.wavesenterprise.com/node-0';
 const sdk = new We(NODE_URL);
 const keypair = await Keypair.fromExistingSeedPhrase(SEED)
 
+const config = await sdk.node.config()
+const fee = config.minimumFee[TRANSACTION_TYPES.Transfer]
+
 const tx = TRANSACTIONS.Transfer.V3({
     attachment: "",
     senderPublicKey: await keypair.publicKey(),
