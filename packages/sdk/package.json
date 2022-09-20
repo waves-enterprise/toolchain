@@ -1,9 +1,12 @@
 {
-  "name": "@wavesenterprise/оыsdk",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@wavesenterprise/sdk",
+  "version": "1.0.3",
+  "description": "Waves Enterprise SDK",
   "private": false,
+  "licenses": ["MIT"],
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/sdk.esm.js",
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",

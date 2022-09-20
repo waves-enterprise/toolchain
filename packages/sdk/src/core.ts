@@ -12,9 +12,7 @@ export class Core {
         }
     }
 
-    constructor(public nodeUrl: string) {
-
-    }
+    constructor(public nodeUrl: string) {}
 
     setApiKey(apiKey: string) {
         this.addHeader('x-api-key', apiKey);

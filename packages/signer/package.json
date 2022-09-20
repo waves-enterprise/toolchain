@@ -1,7 +1,11 @@
 {
   "name": "@wavesenterprise/signer",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Library for signing transactions for Waves Enterprise blockchain",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/signer.esm.js",

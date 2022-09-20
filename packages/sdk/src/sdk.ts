@@ -13,7 +13,6 @@ export class We extends Core {
     node: NodeApi;
     assets: AssetsApi;
 
-
     signer: Signer
 
     constructor(nodeUrl: string) {

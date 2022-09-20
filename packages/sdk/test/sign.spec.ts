@@ -13,6 +13,7 @@ describe('Test asset Operations', () => {
     beforeAll(async () => {
         weSdk = new We(CARTER);
 
+
         keyPair = await Keypair.fromExistingSeedPhrase(SEED)
         keyPair.setNetworkByte(networkByte)
     })
