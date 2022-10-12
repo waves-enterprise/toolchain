@@ -8,8 +8,11 @@ export * from './interface';
 export * from './signed-tx';
 
 export class Signer {
-    async getSignedTx(tx: BaseTx<any>, seed: string): Promise<SignedTx<any>> {
-        const keypair = await Keypair.fromExistingSeedPhrase(seed)
+    async getSignedTx(tx: BaseTx<any>, seedOrKeypair: string | Keypair): Promise<SignedTx<any>> {
+        const keypair = seedOrKeypair instanceof Keypair
+            ? seedOrKeypair
+            : await Keypair.fromExistingSeedPhrase(seedOrKeypair)
+
         const txBytes = await tx.getBytes();
 
         const signedTx = new SignedTx(tx);
@@ -23,8 +26,10 @@ export class Signer {
         return signedTx;
     }
 
-    async sign(msg: string | Uint8Array, seed: string): Promise<string> {
-        const keypair = await Keypair.fromExistingSeedPhrase(seed)
+    async sign(msg: string | Uint8Array, seedOrKeypair: string | Keypair): Promise<string> {
+        const keypair = seedOrKeypair instanceof Keypair
+            ? seedOrKeypair
+            : await Keypair.fromExistingSeedPhrase(seedOrKeypair)
 
         return keypair.sign(msg)
     }

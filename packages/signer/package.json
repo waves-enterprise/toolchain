@@ -1,6 +1,6 @@
 {
   "name": "@wavesenterprise/signer",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Library for signing transactions for Waves Enterprise blockchain",
   "private": false,
   "publishConfig": {
@@ -10,9 +10,10 @@
   "typings": "dist/index.d.ts",
   "module": "dist/signer.esm.js",
   "scripts": {
-    "build": "tsdx build",
+    "build": "tsdx build --format cjs,umd,esm",
     "start": "tsdx watch",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "prepublish": "pnpm build"
   },
   "author": "stfy",
   "license": "ISC",
