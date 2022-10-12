@@ -5,6 +5,7 @@ import {SignedTx, Signer} from "@wavesenterprise/signer";
 import {ContractsApi} from "./apis/contracts";
 import {NodeApi} from "./apis/node";
 import {AssetsApi} from "./apis/assets";
+import {AddressesApi} from "./apis/addresses";
 
 export class We extends Core {
     blocks: BlocksApi;
@@ -12,6 +13,7 @@ export class We extends Core {
     contracts: ContractsApi;
     node: NodeApi;
     assets: AssetsApi;
+    addresses: AddressesApi;
 
     signer: Signer
 
@@ -25,6 +27,7 @@ export class We extends Core {
         this.contracts = new ContractsApi(this);
         this.node = new NodeApi(this);
         this.assets = new AssetsApi(this)
+        this.addresses = new AddressesApi(this);
     }
 
     setSigner(signer: Signer) {
