@@ -1,3 +1,3 @@
 export const numberToHex = (num: number) => {
-  return num.toString(16)
-}
+  return num.toString(16);
+};
