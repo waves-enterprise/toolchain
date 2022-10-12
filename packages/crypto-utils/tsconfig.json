@@ -11,6 +11,7 @@
     "allowJs": false,
     "declaration": true,
     "noUnusedParameters": true,
+    "moduleResolution": "node",
     "noImplicitReturns": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,

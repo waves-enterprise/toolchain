@@ -1,6 +1,4 @@
-import {createKeys} from "../src";
-import {sha256} from "../src/utils/sha256";
-import {createAddress, toBase58} from "../dist";
+import {createAddress, createKeys, toBase58} from "../src";
 
 const SEED = 'copper venture beauty snake wear million champion enact humor visa prepare garment party rapid annual'
 
@@ -15,14 +13,14 @@ const res = {
 
 describe('Utils', () => {
     it('should make public and private keys', async function () {
-        const keys = await createKeys(sha256, SEED)
+        const keys = await createKeys(SEED)
 
         expect(toBase58(keys.publicKey)).toBe(res.keyPair.publicKey)
         expect(toBase58(keys.privateKey)).toBe(res.keyPair.privateKey)
     });
 
-    it('should makea address', async function () {
-        const keys = await createKeys(sha256, SEED)
+    it('should make address', async function () {
+        const keys = await createKeys(SEED)
 
         expect(toBase58(createAddress(keys.publicKey, 'V'.charCodeAt(0)))).toBe(res.address)
     });

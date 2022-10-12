@@ -1,5 +1,5 @@
-import { createHash } from 'crypto'
+import {sha256 as sha256Hash} from 'js-sha256'
 
 export const sha256 = (data: Uint8Array) => {
-    return createHash('sha256').update(data).digest()
+    return new Uint8Array(sha256Hash.array(data))
 }
