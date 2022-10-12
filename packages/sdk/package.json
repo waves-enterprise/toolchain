@@ -1,9 +1,8 @@
 {
   "name": "@wavesenterprise/sdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Waves Enterprise SDK",
   "private": false,
-  "licenses": ["MIT"],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/sdk.esm.js",
@@ -16,7 +15,7 @@
     "access": "public"
   },
   "author": "stfy",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@wavesenterprise/crypto-utils": "workspace:*",
     "@wavesenterprise/signer": "workspace:*",

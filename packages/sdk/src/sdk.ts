@@ -51,7 +51,11 @@ export class We extends Core {
         this.assets = assetsApi;
     }
 
-    async broadcast(tx: SignedTx<any>) {
-        return await this.transactions.broadcast(tx.getRawBody());
+    broadcast(tx: SignedTx<any>) {
+        return this.transactions.broadcast(tx.getRawBody());
+    }
+
+    broadcastRaw(tx: object) {
+        return this.transactions.broadcast(tx);
     }
 }
